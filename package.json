@@ -1,7 +1,7 @@
 {
   "name": "prrcounter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Checks pull requests",
   "main": "index.js",
   "scripts": {
     "start": "probot run ./index.js",
@@ -18,6 +18,15 @@
   },
   "homepage": "https://github.com/probotics2018/PRRCounter#readme",
   "dependencies": {
-    "expect": "^22.2.0"
+    "expect": "^22.2.0",
+    "probot": "^5.0.0"
+  },
+  "engines": {
+    "node": "~7.7.0"
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ]
   }
 }
