@@ -1,0 +1,23 @@
+{
+  "name": "prrcounter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "probot run ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/probotics2018/PRRCounter.git"
+  },
+  "author": "probotics2018",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/probotics2018/PRRCounter/issues"
+  },
+  "homepage": "https://github.com/probotics2018/PRRCounter#readme",
+  "dependencies": {
+    "expect": "^22.2.0"
+  }
+}
