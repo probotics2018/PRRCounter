@@ -2,6 +2,7 @@ const expect = require('expect')
 const {createRobot} = require('probot')
 const plugin = require('..')
 const event = require('./fixtures/pull_request.opened')
+const request = require('request')
 
 describe('prrcounter', () => {
   let robot
@@ -36,6 +37,8 @@ describe('prrcounter', () => {
   it('posts a comment', async () => {
     await robot.receive(event)
 
+    console.log("EVENT: " + event);
+
     expect(github.repos.getContent).toHaveBeenCalledWith({
       owner: 'robotland',
       repo: 'test',
@@ -48,5 +51,11 @@ describe('prrcounter', () => {
       number: 97,
       body: 'Hello World!'
     })
+  })
+
+  it('looks for reviews', async () => {
+    await robot.receive(event)
+
+
   })
 })
