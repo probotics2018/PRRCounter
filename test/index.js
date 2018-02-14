@@ -34,28 +34,28 @@ describe('prrcounter', () => {
     robot.auth = () => Promise.resolve(github)
   })
 
-  it('posts a comment', async () => {
-    await robot.receive(event)
+  // it('posts a comment', async () => {
+  //   await robot.receive(event)
 
-    console.log("EVENT: " + event);
+  //   console.log("EVENT: " + event);
 
-    expect(github.repos.getContent).toHaveBeenCalledWith({
-      owner: 'robotland',
-      repo: 'test',
-      path: '.github/ISSUE_REPLY_TEMPLATE.md'
-    })
+  //   expect(github.repos.getContent).toHaveBeenCalledWith({
+  //     owner: 'robotland',
+  //     repo: 'test',
+  //     path: '.github/ISSUE_REPLY_TEMPLATE.md'
+  //   })
 
-    expect(github.issues.createComment).toHaveBeenCalledWith({
-      owner: 'robotland',
-      repo: 'test',
-      number: 97,
-      body: 'Hello World!'
-    })
-  })
+  //   expect(github.issues.createComment).toHaveBeenCalledWith({
+  //     owner: 'robotland',
+  //     repo: 'test',
+  //     number: 97,
+  //     body: 'Hello World!'
+  //   })
+  // })
 
-  it('looks for reviews', async () => {
-    await robot.receive(event)
+  // it('looks for reviews', async () => {
+  //   await robot.receive(event)
 
-
-  })
+    
+  // })
 })
