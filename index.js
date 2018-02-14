@@ -6,6 +6,6 @@ module.exports = robot => {
     console.log("SOMETHING IS HAPPENING");
     console.log(process.env.APP_ID);
 
-    return context.github.issues.createComment(context.issue({body: template}))
+    return context.github.pull_request.createComment(context.issue({body: template}))
   });
 }
