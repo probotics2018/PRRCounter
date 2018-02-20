@@ -4,7 +4,7 @@ module.exports = robot => {
     const res = await context.github.repos.getContent(options)
     const template = Buffer.from(res.data.content, 'base64').toString()
     console.log("SOMETHING IS HAPPENING");
-    console.log(context.github.gitdata.getAllReferences());
+    console.log(context.github.gitdata.getReferences());
     //console.log(context.github.statuses.get())
 
 
