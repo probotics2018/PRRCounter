@@ -5,7 +5,7 @@ module.exports = robot => {
     const template = Buffer.from(res.data.content, 'base64').toString()
     console.log("SOMETHING IS HAPPENING");
     // Array of all pull requests and getting the first object in the array
-    console.log(context.github.pullRequests.getAll({"probotics2018", "test"})[0]);
+    console.log(context.github.pullRequests.getAll("probotics2018", "test")[0]);
 
 
     // github.pull_request doesn't exist
