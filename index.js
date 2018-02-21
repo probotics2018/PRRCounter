@@ -9,7 +9,7 @@ module.exports = robot => {
 		"owner": "probotics2018",
 		"repo": "test"
 	});
-    console.log(PRarray[0]);
+    console.log("HERE PLEASE" + PRarray[0]);
 
 
     // github.pull_request doesn't exist
