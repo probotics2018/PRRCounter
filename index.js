@@ -2,7 +2,9 @@ const fs = require('fs');
 
 module.exports = robot => {
   robot.on('pull_request.opened', async context => {
-  	template = fs.readFileSync("RESPONSE.md");
+  	const options = context.repo({path: 'R_ISSUE_REPLY_TEMPLATE.md'})
+    const res = await context.github.repos.getContent(options)
+    const template = Buffer.from(res.data.content, 'base64').toString()
     console.log("SOMETHING IS HAPPENING");
     // Array of all pull requests and getting the first object in the array
     var PRarray = context.github.pullRequests.getAll({
