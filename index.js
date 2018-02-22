@@ -13,7 +13,7 @@ module.exports = robot => {
 			"repo": "test"
 		});
 		// Should return the latest pull request
-		singlePR = JSON.parse(prArray)["data"][0];
+		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
 		console.log(singlePR);
 	    console.log("pull request number : " + singlePR["number"]);
 
