@@ -1,4 +1,5 @@
 const fs = require('fs');
+const numApproved = 2;
 
 module.exports = robot => {
 	var singlePR = {};
@@ -14,21 +15,29 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		console.log(singlePR);
-	    console.log("pull request number : " + singlePR["number"]);
 
-
-
-	    // github.pull_request doesn't exist
 
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
 	robot.on('pull_request_review.submitted', async context => {
 	console.log('Pull request submitted');
+		approveReviews = 0;
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": "probotics2018",
 	  		"repo": "test",
-	  		"number": 49
+	  		"number": singlePR["number"]
 	  	});
+	  	if (reviewsArray.length > numApproved) {
+	  		for (var a = 0; a < reviewsArray; a++) {
+	  			if(reviewsArray[a]["state"] == "APPROVED") {
+	  				approveReviews++;
+	  			}
+	  		}
+	  	}
+	  	if (approveReviews > numApproved) {
+	  		console.log("There are more than 2 approved reviews");
+	  	} else {
+	  		console.log("There are " + approveReviews + " approved reviews");
+	  	}
 	});
 }
