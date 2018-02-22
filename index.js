@@ -13,7 +13,7 @@ module.exports = robot => {
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
 	    var prArray = await context.github.pullRequests.getAll({
-			"owner": owner
+			"owner": owner,
 			"repo": repo
 		});
 		// Should return the latest pull request
