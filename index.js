@@ -29,6 +29,8 @@ module.exports = robot => {
 	  	});
 	  	if (reviewsArray.length > numApproved) {
 	  		for (var a = 0; a < reviewsArray; a++) {
+	  			console.log(reviewArrays[a]);
+	  			console.log(reviewArrays[a]["state"]);
 	  			if(reviewsArray[a]["state"] == "APPROVED") {
 	  				approveReviews++;
 	  			}
