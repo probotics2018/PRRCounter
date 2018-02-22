@@ -18,7 +18,13 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		setStatus = await context.github.repos.createStatus({owner, repo, sha, state, target_url, description, context})
+
+		setStatus = await context.github.repos.createStatus({
+			"owner": owner, 
+			"repo": repo,
+			"sha": singlePR["merge_commit_sha"], 
+			"state": "failure"
+		});
 
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
