@@ -28,7 +28,7 @@ module.exports = robot => {
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": "probotics2018",
 	  		"repo": "test",
-	  		"number": 
+	  		"number": 49
 	  	});
 	});
 }
