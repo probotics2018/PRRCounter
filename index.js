@@ -1,5 +1,5 @@
 const fs = require('fs');
-const numApproved = 2;
+const numApproved = 0;
 
 module.exports = robot => {
 	var singlePR = {};
