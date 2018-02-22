@@ -11,7 +11,7 @@ module.exports = robot => {
 		"owner": "probotics2018",
 		"repo": "test"
 	});
-    console.log("HERE" + PRarray);
+    console.log("HERE" + JSON.stringify(PRarray));
 
 
     // github.pull_request doesn't exist
