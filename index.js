@@ -20,8 +20,14 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		console.log(JSON.stringify(singlePR));
-		var sha = singlePR["merge_commit_sha"];
+		const commitArray = await octokit.pullRequests.getCommits({
+			"owner": owner, 
+			"repo": repo, 
+			"number": singlePR["number"]
+		});
+		commitArray = JSON.parse(JSON.stringify(commitArray));
+		var sha = commitArray[0]["sha"];
+		var commitURL = commitArray[0]["url"];
 		if (sha == null) {
 			console.log("WHYYYYYYYYYYYYYYYYY");
 		} else {
@@ -44,6 +50,7 @@ module.exports = robot => {
 	  		"number": singlePR["number"]
 	  	});
 	  	reviewsArray = JSON.parse(JSON.stringify(reviewsArray));
+	  	console.log(reviewsArray);
 	  	if (reviewsArray.length > numApproved) {
 	  		console.log("we're in the loop");
 	  		for (var a = 0; a < reviewsArray; a++) {
