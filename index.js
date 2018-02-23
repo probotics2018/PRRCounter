@@ -18,6 +18,7 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+		console.log(JSON.stringify(singlePR));
 		var sha = singlePR["merge_commit_sha"];
 		console.log(sha);
 
