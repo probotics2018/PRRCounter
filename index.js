@@ -12,16 +12,20 @@ module.exports = robot => {
 	    const template = Buffer.from(res.data.content, 'base64').toString()
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
-	    var prArray = await context.github.pullRequests.getAll({
-			"owner": owner,
-			"repo": repo
-		});
-		// Should return the latest pull request
-		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		console.log(JSON.stringify(singlePR));
-		var sha = singlePR["merge_commit_sha"];
-		console.log(sha);
 
+	    var sha;
+	    setTimeout(function() {
+			var prArray = await context.github.pullRequests.getAll({
+				"owner": owner,
+				"repo": repo
+			});
+			// Should return the latest pull request
+			singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+			console.log(JSON.stringify(singlePR));
+			sha = singlePR["merge_commit_sha"];
+			console.log(sha);
+	    }, 5000);
+	    
 		setStatus = await context.github.repos.createStatus({
 			"owner": owner, 
 			"repo": repo,
