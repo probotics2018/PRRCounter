@@ -13,25 +13,24 @@ module.exports = robot => {
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
 
-	    var sha;
-	    setTimeout(function() {
-			var prArray = await context.github.pullRequests.getAll({
-				"owner": owner,
-				"repo": repo
-			});
-			// Should return the latest pull request
-			singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-			console.log(JSON.stringify(singlePR));
-			sha = singlePR["merge_commit_sha"];
-			console.log(sha);
-	    }, 5000);
-	    
-		setStatus = await context.github.repos.createStatus({
-			"owner": owner, 
-			"repo": repo,
-			"sha": sha, 
-			"state": "failure"
+		const prArray = await context.github.pullRequests.getAll({
+			"owner": owner,
+			"repo": repo
 		});
+		// Should return the latest pull request
+		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+		console.log(JSON.stringify(singlePR));
+		var sha = singlePR["merge_commit_sha"];
+		if (sha == null) {
+			console.log("WHYYYYYYYYYYYYYYYYY")
+		} else {
+			setStatus = await context.github.repos.createStatus({
+				"owner": owner, 
+				"repo": repo,
+				"sha": sha, 
+				"state": "failure"
+			});
+		}
 
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
