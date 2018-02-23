@@ -15,14 +15,15 @@ module.exports = robot => {
 
 		const prArray = await context.github.pullRequests.getAll({
 			"owner": owner,
-			"repo": repo
+			"repo": repo,
+			"state":"open"
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
 		console.log(JSON.stringify(singlePR));
 		var sha = singlePR["merge_commit_sha"];
 		if (sha == null) {
-			console.log("WHYYYYYYYYYYYYYYYYY")
+			console.log("WHYYYYYYYYYYYYYYYYY");
 		} else {
 			setStatus = await context.github.repos.createStatus({
 				"owner": owner, 
@@ -35,13 +36,14 @@ module.exports = robot => {
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
 	robot.on('pull_request_review.submitted', async context => {
-	console.log('Pull request submitted');
+	console.log('Review submitted');
 		approveReviews = 0;
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
 	  		"repo": repo,
 	  		"number": singlePR["number"]
 	  	});
+	  	console.log("REVIEWSARRAY" + reviewsArray);
 	  	if (reviewsArray.length > numApproved) {
 	  		console.log("we're in the loop");
 	  		for (var a = 0; a < reviewsArray; a++) {
