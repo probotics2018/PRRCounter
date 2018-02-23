@@ -18,11 +18,13 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+		var sha = singlePR["merge_commit_sha"];
+		console.log(sha);
 
 		setStatus = await context.github.repos.createStatus({
 			"owner": owner, 
 			"repo": repo,
-			"sha": singlePR["merge_commit_sha"], 
+			"sha": sha, 
 			"state": "failure"
 		});
 
