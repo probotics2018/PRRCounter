@@ -52,7 +52,8 @@ module.exports = robot => {
 	  		"number": singlePR["number"]
 	  	});
 	  	reviewsArray = JSON.parse(JSON.stringify(reviewsArray));
-	  	console.log(reviewsArray);
+	  	reviewsArray = reviewsArray["data"];
+	  	console.log("REVIEWSARRAY" + JSON.stringify(reviewsArray));
 	  	if (reviewsArray.length > numApproved) {
 	  		console.log("we're in the loop");
 	  		for (var a = 0; a < reviewsArray; a++) {
