@@ -27,9 +27,9 @@ module.exports = robot => {
 			"number": singlePR["number"]
 		});
 		commitArray = JSON.parse(JSON.stringify(commitArray));
-		console.log("COMMITARRAY" + JSON.stringify(commitArray));
-		var sha = commitArray[0]["sha"];
-		var commitURL = commitArray[0]["url"];
+		console.log("COMMITARRAY" + JSON.stringify(commitArray);)
+		var sha = commitArray["data"][0]["sha"];
+		var commitURL = commitArray["data"][0]["url"];
 		if (sha == null) {
 			console.log("WHYYYYYYYYYYYYYYYYY");
 		} else {
