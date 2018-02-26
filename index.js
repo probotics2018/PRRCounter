@@ -20,7 +20,7 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		const commitArray = await octokit.pullRequests.getCommits({
+		const commitArray = await context.github.pullRequests.getCommits({
 			"owner": owner, 
 			"repo": repo, 
 			"number": singlePR["number"]
