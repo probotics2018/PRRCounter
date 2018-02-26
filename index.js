@@ -20,12 +20,14 @@ module.exports = robot => {
 		});
 		// Should return the latest pull request
 		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+		console.log("SINGLEPRNUMBER" + singlePR["number"]);
 		var commitArray = await context.github.pullRequests.getCommits({
 			"owner": owner, 
 			"repo": repo, 
 			"number": singlePR["number"]
 		});
 		commitArray = JSON.parse(JSON.stringify(commitArray));
+		console.log("COMMITARRAY" + commitArray);
 		var sha = commitArray[0]["sha"];
 		var commitURL = commitArray[0]["url"];
 		if (sha == null) {
