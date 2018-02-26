@@ -5,5 +5,6 @@ module.exports = robot => {
     const template = Buffer.from(res.data.content, 'base64').toString()
 
     return context.github.issues.createComment(context.issue({body: template}))
+    //what is context.issue
   })
 }
