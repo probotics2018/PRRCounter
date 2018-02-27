@@ -39,11 +39,11 @@ context.github.repos.createStatus({
 	description:Description
 }).then(()=>context.github.response.send(Status))
 
-
+robot.log(context)
 
 });
 
-robot.log(context)
+
 }
 
 
