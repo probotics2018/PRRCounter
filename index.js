@@ -4,7 +4,7 @@ module.exports = robot => {
     const res = await context.github.repos.getContent(options)
     const template = Buffer.from(res.data.content, 'base64').toString()
 
-     const result = await octokit.pullRequests.getAll(saanvid, PRRcounter)
+     const result = await github.issues.pullRequests.getAll(saanvid, PRRcounter)
 
     return context.github.issues.createComment(context.issue({body: template}))
     //get all pull requests
