@@ -29,7 +29,7 @@ module.exports = robot => {
 		commitArray = JSON.parse(JSON.stringify(commitArray));
 		console.log("COMMITARRAY" + JSON.stringify(commitArray));
 		var sha = commitArray["data"][0]["sha"];
-		var commitURL = commitArray["data"][0]["url"];
+		// var commitURL = commitArray["data"][0]["url"];
 		if (sha == null) {
 			console.log("WHYYYYYYYYYYYYYYYYY");
 		} else {
@@ -65,7 +65,9 @@ module.exports = robot => {
 	  		}
 	  	}
 	  	if (approveReviews > numApproved) {
-	  		console.log("There are more than 2 approved reviews");
+	  		console.log("There are more than " + numApproved + " approved reviews");
+	  		console.log(context.github.pullRequests.head.sha)
+	  		var sha = context.github.pullRequests.head.sha;
 	  		setStatus = await context.github.repos.createStatus({
 	  			"owner":owner,
 	  			"repo":repo,
