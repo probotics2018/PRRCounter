@@ -44,7 +44,8 @@ module.exports = robot => {
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
 	robot.on('pull_request_review.submitted', async context => {
-	console.log('Review submitted');
+		console.log("CONTEXT"+ JSON.stringify(context));
+		console.log('Review submitted');
 		approveReviews = 0;
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
@@ -66,8 +67,6 @@ module.exports = robot => {
 	  	}
 	  	if (approveReviews > numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
-	  		console.log(context.github.pullRequests.head.sha)
-	  		var sha = context.github.pullRequests.head.sha;
 	  		setStatus = await context.github.repos.createStatus({
 	  			"owner":owner,
 	  			"repo":repo,
