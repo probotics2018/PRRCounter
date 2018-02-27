@@ -66,7 +66,7 @@ module.exports = robot => {
 	  	}
 	  	if (approveReviews > numApproved) {
 	  		console.log("There are more than 2 approved reviews");
-	  		setStatus = await context.github.repos.
+	  		//setStatus = await context.github.repos
 	  	} else {
 	  		console.log("There are " + approveReviews + " approved reviews");
 	  	}
