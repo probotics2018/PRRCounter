@@ -57,8 +57,8 @@ module.exports = robot => {
 	  	if (reviewsArray.length > numApproved) {
 	  		console.log("we're in the loop");
 	  		for (var a = 0; a < reviewsArray.length; a++) {
-	  			console.log(reviewArray[a]);
-	  			console.log(reviewArray[a]["state"]);
+	  			console.log(reviewsArray[a]);
+	  			console.log(reviewsArray[a]["state"]);
 	  			if(reviewsArray[a]["state"] == "APPROVED") {
 	  				approveReviews++;
 	  			}
@@ -66,7 +66,12 @@ module.exports = robot => {
 	  	}
 	  	if (approveReviews > numApproved) {
 	  		console.log("There are more than 2 approved reviews");
-	  		//setStatus = await context.github.repos
+	  		setStatus = await context.github.repos.createStatus({
+	  			"owner":owner,
+	  			"repo":repo,
+	  			"sha":sha,
+	  			"state": "success"
+	  		})
 	  	} else {
 	  		console.log("There are " + approveReviews + " approved reviews");
 	  	}
