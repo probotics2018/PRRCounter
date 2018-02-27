@@ -7,7 +7,7 @@ repo:context.github.pullRequests.head.repo.name,
 number:context.github.pullRequests.number
 })
 
-   #start to count the number of approves
+   //start to count the number of approves
    const config = await context.config('PRRCounter.yml')
    
    let countApproved = 0;
@@ -16,7 +16,7 @@ number:context.github.pullRequests.number
       countApproved =countApproved + 1;
    }
 
-   #now we have the count
+   //now we have the count
 let Status;
 let Description;
 
@@ -29,7 +29,7 @@ let Description;
         Description="Need two approvals for Merge";
    }
 
-#POST /repos/:owner/:repo/statuses/:sha
+//POST /repos/:owner/:repo/statuses/:sha
 
 context.github.repos.createStatus({
 owner:context.github.pullRequests.head.repo.owner.login,
