@@ -56,7 +56,7 @@ module.exports = robot => {
 	  	console.log("REVIEWSARRAY" + JSON.stringify(reviewsArray));
 	  	if (reviewsArray.length > numApproved) {
 	  		console.log("we're in the loop");
-	  		for (var a = 0; a < reviewsArray; a++) {
+	  		for (var a = 0; a < reviewsArray.length; a++) {
 	  			console.log(reviewArrays[a]);
 	  			console.log(reviewArrays[a]["state"]);
 	  			if(reviewsArray[a]["state"] == "APPROVED") {
