@@ -1,5 +1,5 @@
 const fs = require('fs');
-const numApproved = 0;
+const numApproved = 2;
 
 const owner = "probotics2018";
 const repo = "test";
@@ -55,7 +55,7 @@ module.exports = robot => {
 	  	reviewsArray = JSON.parse(JSON.stringify(reviewsArray));
 	  	reviewsArray = reviewsArray["data"];
 	  	console.log("REVIEWSARRAY" + JSON.stringify(reviewsArray));
-	  	if (reviewsArray.length > numApproved) {
+	  	if (reviewsArray.length >= numApproved) {
 	  		console.log("we're in the loop");
 	  		for (var a = 0; a < reviewsArray.length; a++) {
 	  			console.log(reviewsArray[a]);
@@ -81,7 +81,7 @@ module.exports = robot => {
 		commitArray = JSON.parse(JSON.stringify(commitArray));
 		console.log("COMMITARRAY" + JSON.stringify(commitArray));
 		var sha = commitArray["data"][0]["sha"];
-	  	if (approveReviews > numApproved) {
+	  	if (approveReviews >= numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
 	  		setStatus = await context.github.repos.createStatus({
 	  			"owner":owner,
