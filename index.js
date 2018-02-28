@@ -3,7 +3,7 @@ module.exports = robot => {
     // Code was pushed to the repo, what should we do with it?
     console.log("Catch submit event");
     console.log("1:"+context.github.pullRequests);
-    console.log("2:"+context.github.pullRequests.body);
+    console.log("2:"+context.github.pullRequests.getBody());
     console.log("3:"+context.github.pullRequests.number);
     console.log("4:"+context.github.pullRequests.body.repo.owner.login);
     console.log(context.github.pullRequests.body.repo.name);
