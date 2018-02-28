@@ -1,0 +1,31 @@
+{
+  "name": "probot-PRRCounter",
+  "version": "1.1.0",
+  "description": "a GitHub App that closes abandoned issues after a period of inactivity",
+  "author": "Helena Gao",
+  "license": "ISC",
+  "repository": "https://github.com/probotics2018/PRRCounter",
+  "scripts": {
+    "start": "probot run ./index.js",
+    "test": "mocha && standard"
+  },
+  "dependencies": {
+    "probot": "^3.0.0",
+    "probot-scheduler": "^1.0.2",
+    "standard": "^10.0.3"
+  },
+  "engines": {
+    "node": "^7.7",
+    "npm": "^4.0"
+  },
+  "devDependencies": {
+    "expect": "^1.20.2",
+    "localtunnel": "^1.8.3",
+    "mocha": "^3.5.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
+  }
+}
