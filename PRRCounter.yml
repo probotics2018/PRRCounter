@@ -1,0 +1,5 @@
+#minimum required approves for the pull request
+MIN_REQUIRED_APPROVES:2
+
+Not_Enough_Approve:At least 2 approves are required for the pull request.
+
