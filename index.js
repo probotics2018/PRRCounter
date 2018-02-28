@@ -65,6 +65,7 @@ module.exports = robot => {
 	  			}
 	  		}
 	  	}
+	  	var sha = commitArray["data"][0]["sha"];
 	  	if (approveReviews > numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
 	  		setStatus = await context.github.repos.createStatus({
