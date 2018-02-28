@@ -65,7 +65,22 @@ module.exports = robot => {
 	  			}
 	  		}
 	  	}
-	  	var sha = commitArray["data"][0]["sha"];
+	  	const prArray = await context.github.pullRequests.getAll({
+			"owner": owner,
+			"repo": repo,
+			"state":"open"
+		});
+		// Should return the latest pull request
+		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
+		console.log("SINGLEPRNUMBER" + singlePR["number"]);
+		var commitArray = await context.github.pullRequests.getCommits({
+			"owner": owner, 
+			"repo": repo, 
+			"number": singlePR["number"]
+		});
+		commitArray = JSON.parse(JSON.stringify(commitArray));
+		console.log("COMMITARRAY" + JSON.stringify(commitArray));
+		var sha = commitArray["data"][0]["sha"];
 	  	if (approveReviews > numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
 	  		setStatus = await context.github.repos.createStatus({
