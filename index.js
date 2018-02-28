@@ -1,5 +1,5 @@
 module.exports = robot => {
-	robot.on('pull_request.submitted', async context => {
+	robot.on('pull_request.opened', async context => {
     // Code was pushed to the repo, what should we do with it?
     console.log("Catch submit event");
     console.log(context.github.pullRequests.head.repo.owner.login);
