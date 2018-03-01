@@ -13,18 +13,13 @@ module.exports = robot => {
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
 	    console.log("CONTEXT" + JSON.stringify(context));
-		const prArray = await context.github.pullRequests.getAll({
-			"owner": owner,
-			"repo": repo,
-			"state":"open"
-		});
-		// Should return the latest pull request
-		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		console.log("SINGLEPRNUMBER" + singlePR["number"]);
+	    var usableContext = JSON.parse(JSON.stringify(context));
+	    var singlePRNum = usableContext["payload"]["pull_request"]["number"]
+		
 		var commitArray = await context.github.pullRequests.getCommits({
 			"owner": owner, 
 			"repo": repo, 
-			"number": singlePR["number"]
+			"number": singlePRNum
 		});
 		commitArray = JSON.parse(JSON.stringify(commitArray));
 		console.log("COMMITARRAY" + JSON.stringify(commitArray));
@@ -65,22 +60,8 @@ module.exports = robot => {
 	  			}
 	  		}
 	  	}
-	  	const prArray = await context.github.pullRequests.getAll({
-			"owner": owner,
-			"repo": repo,
-			"state":"open"
-		});
-		// Should return the latest pull request
-		singlePR = JSON.parse(JSON.stringify(prArray))["data"][0];
-		console.log("SINGLEPRNUMBER" + singlePR["number"]);
-		var commitArray = await context.github.pullRequests.getCommits({
-			"owner": owner, 
-			"repo": repo, 
-			"number": singlePR["number"]
-		});
-		commitArray = JSON.parse(JSON.stringify(commitArray));
-		console.log("COMMITARRAY" + JSON.stringify(commitArray));
-		var sha = commitArray["data"][0]["sha"];
+	  	var usableContext = JSON.parse(JSON.stringify(context));
+	  	var sha = usableContext["payload"]["review"]["commit_id"];
 	  	if (approveReviews >= numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
 	  		setStatus = await context.github.repos.createStatus({
