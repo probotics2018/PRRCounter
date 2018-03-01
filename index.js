@@ -12,7 +12,7 @@ module.exports = robot => {
 	    const template = Buffer.from(res.data.content, 'base64').toString()
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
-
+	    console.log("CONTEXT" + JSON.stringify(context));
 		const prArray = await context.github.pullRequests.getAll({
 			"owner": owner,
 			"repo": repo,
