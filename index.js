@@ -1,15 +1,14 @@
 const fs = require('fs');
 const numApproved = 2;
 
-const owner = "probotics2018";
-const repo = "test";
-
 module.exports = robot => {
 	robot.on('pull_request.opened', async context => {
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
 	    var usableContext = JSON.parse(JSON.stringify(context));
 	    var singlePRNum = usableContext["payload"]["pull_request"]["number"]
+	    var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
+	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
 		
 		var commitArray = await context.github.pullRequests.getCommits({
 			"owner": owner, 
@@ -37,6 +36,9 @@ module.exports = robot => {
 		var usableContext = JSON.parse(JSON.stringify(context));
 
 		var singlePRNum = usableContext["payload"]["pull_request"]["number"];
+		var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
+	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
+	    
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
 	  		"repo": repo,
