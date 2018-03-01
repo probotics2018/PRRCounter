@@ -1,5 +1,5 @@
 const fs = require('fs');
-const numApproved = 	;
+const numApproved = 2;
 
 module.exports = robot => {
 	robot.on('pull_request.opened', async context => {
