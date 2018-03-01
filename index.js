@@ -38,7 +38,7 @@ module.exports = robot => {
 		var singlePRNum = usableContext["payload"]["pull_request"]["number"];
 		var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
 	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
-	    
+
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
 	  		"repo": repo,
@@ -46,13 +46,12 @@ module.exports = robot => {
 	  	});
 	  	reviewsArray = JSON.parse(JSON.stringify(reviewsArray));
 	  	reviewsArray = reviewsArray["data"];
-	  	if (reviewsArray.length >= numApproved) {
-	  		for (var a = 0; a < reviewsArray.length; a++) {
-	  			if(reviewsArray[a]["state"] == "APPROVED") {
-	  				approveReviews++;
-	  			}
-	  		}
-	  	}
+  		for (var a = 0; a < reviewsArray.length; a++) {
+  			if(reviewsArray[a]["state"] == "APPROVED") {
+  				approveReviews++;
+  			}
+  		}
+  		
 	  	var sha = usableContext["payload"]["review"]["commit_id"];
 	  	if (approveReviews >= numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
