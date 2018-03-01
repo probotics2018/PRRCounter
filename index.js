@@ -39,13 +39,15 @@ module.exports = robot => {
 	    return context.github.issues.createComment(context.issue({body: template}));
 	});
 	robot.on('pull_request_review.submitted', async context => {
-		console.log("CONTEXT"+ JSON.stringify(context));
 		console.log('Review submitted');
 		approveReviews = 0;
+		var usableContext = JSON.parse(JSON.stringify(context));
+
+		var singlePRNum = usableContext["payload"]["pull_request"]["number"];
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
 	  		"repo": repo,
-	  		"number": singlePR["number"]
+	  		"number": singlePRNum
 	  	});
 	  	reviewsArray = JSON.parse(JSON.stringify(reviewsArray));
 	  	reviewsArray = reviewsArray["data"];
@@ -60,7 +62,6 @@ module.exports = robot => {
 	  			}
 	  		}
 	  	}
-	  	var usableContext = JSON.parse(JSON.stringify(context));
 	  	var sha = usableContext["payload"]["review"]["commit_id"];
 	  	if (approveReviews >= numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
