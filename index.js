@@ -9,7 +9,7 @@ module.exports = robot => {
 	    var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
 	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
 		
-		var sha = usableContext["payload"]["pull_request"]["head"]["sha"]
+		var sha = usableContext["payload"]["pull_request"]["head"]["sha"];
 		if (sha == null) {
 			console.log("SHA IS NULL");
 		} else {
@@ -17,7 +17,9 @@ module.exports = robot => {
 				"owner": owner, 
 				"repo": repo,
 				"sha": sha, 
-				"state": "failure"
+				"state": "failure",
+				"context": "Pull Request Review Counter",
+				"description": "You do not have " + numApproved + " approved pull requests reviews!"
 			});
 		}
 
@@ -32,7 +34,6 @@ module.exports = robot => {
 		var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
 	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
 
-	    console.log(JSON.stringify(context));
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
 	  		"repo": repo,
@@ -53,7 +54,9 @@ module.exports = robot => {
 	  			"owner":owner,
 	  			"repo":repo,
 	  			"sha":sha,
-	  			"state": "success"
+	  			"state": "success",
+	  			"context": "Pull Request Review Counter",
+	  			"description": "Pull request review requirement met!"
 	  		})
 	  	} else {
 	  		console.log("There are " + approveReviews + " approved reviews");
