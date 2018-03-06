@@ -5,11 +5,10 @@ module.exports = robot => {
 	robot.on('pull_request.opened', async context => {
 	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
-	    var usableContext = JSON.parse(JSON.stringify(context));
-	    var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
-	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
+	    var owner = context["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
+	    var repo = context["payload"]["pull_request"]["head"]["repo"]["name"];
 		
-		var sha = usableContext["payload"]["pull_request"]["head"]["sha"];
+		var sha = context["payload"]["pull_request"]["head"]["sha"];
 		if (sha == null) {
 			console.log("SHA IS NULL");
 		} else {
@@ -28,11 +27,10 @@ module.exports = robot => {
 	robot.on('pull_request_review.submitted', async context => {
 		console.log('Review submitted');
 		approveReviews = 0;
-		var usableContext = JSON.parse(JSON.stringify(context));
 
-		var singlePRNum = usableContext["payload"]["pull_request"]["number"];
-		var owner = usableContext["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
-	    var repo = usableContext["payload"]["pull_request"]["head"]["repo"]["name"];
+		var singlePRNum = context["payload"]["pull_request"]["number"];
+		var owner = context["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
+	    var repo = context["payload"]["pull_request"]["head"]["repo"]["name"];
 
 	  	var reviewsArray = await context.github.pullRequests.getReviews({
 	  		"owner": owner,
@@ -47,7 +45,7 @@ module.exports = robot => {
   			}
   		}
 
-	  	var sha = usableContext["payload"]["review"]["commit_id"];
+	  	var sha = context["payload"]["review"]["commit_id"];
 	  	if (approveReviews >= numApproved) {
 	  		console.log("There are more than " + numApproved + " approved reviews");
 	  		setStatus = await context.github.repos.createStatus({
