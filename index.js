@@ -3,7 +3,6 @@ const numApproved = 2;
 
 module.exports = robot => {
 	robot.on('pull_request.opened', async context => {
-	    console.log("SOMETHING IS HAPPENING");
 	    // Array of all pull requests and getting the first object in the array
 	    var owner = context["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
 	    var repo = context["payload"]["pull_request"]["head"]["repo"]["name"];
