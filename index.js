@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 module.exports = robot => {
 	robot.on('pull_request.opened', async context => {
 		const githubConfig = context.repo({path: 'Github.json'})
@@ -31,6 +30,7 @@ module.exports = robot => {
 	    const res = await context.github.repos.getContent(githubConfig)
 	    const template = JSON.parse(Buffer.from(res.data.content, 'base64').toString());
 	    var numApproved = template["approved-reviewer-count"];
+		console.log('Review submitted');
 		approveReviews = 0;
 
 		var singlePRNum = context["payload"]["pull_request"]["number"];
