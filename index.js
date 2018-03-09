@@ -10,7 +10,7 @@ module.exports = robot => {
 	  	const options = context.repo({path: 'R_ISSUE_REPLY_TEMPLATE.md'})
 	    const res = await context.github.repos.getContent(options)
 	    const template = Buffer.from(res.data.content, 'base64').toString()
-	    console.log("SOMETHING IS HAPPENING");
+	    console.log("Status update");
 	    // Array of all pull requests and getting the first object in the array
 
 		const prArray = await context.github.pullRequests.getAll({
@@ -31,7 +31,7 @@ module.exports = robot => {
 		var sha = commitArray["data"][0]["sha"];
 		var commitURL = commitArray["data"][0]["url"];
 		if (sha == null) {
-			console.log("WHYYYYYYYYYYYYYYYYY");
+			console.log("trying\");
 		} else {
 			setStatus = await context.github.repos.createStatus({
 				"owner": owner, 

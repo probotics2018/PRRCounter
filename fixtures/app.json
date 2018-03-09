@@ -1,0 +1,12 @@
+{
+  "env": {
+    "PRIVATE_KEY": {
+      "description": ""},
+    "INTEGRATION_ID": {
+      "description": "44489"
+    },
+    "WEBHOOK_SECRET": {
+      "description": "secret"
+    }
+  }
+}
