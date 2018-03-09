@@ -4,7 +4,7 @@ module.exports = robot => {
 		const githubConfig = context.repo({path: 'Github.json'})
 	    const res = await context.github.repos.getContent(githubConfig)
 	    const template = JSON.parse(Buffer.from(res.data.content, 'base64').toString());
-	    var numApproved = template["approved-reviewer-count"];
+	    var numApproved = parseInt(template["approved-reviewer-count"]);
 	    // Array of all pull requests and getting the first object in the array
 	    var owner = context["payload"]["pull_request"]["head"]["repo"]["owner"]["login"];
 	    var repo = context["payload"]["pull_request"]["head"]["repo"]["name"];
@@ -29,7 +29,7 @@ module.exports = robot => {
 		const githubConfig = context.repo({path: 'Github.json'})
 	    const res = await context.github.repos.getContent(githubConfig)
 	    const template = JSON.parse(Buffer.from(res.data.content, 'base64').toString());
-	    var numApproved = template["approved-reviewer-count"];
+	    var numApproved = parseInt(template["approved-reviewer-count"]);
 		console.log('Review submitted');
 		approveReviews = 0;
 
