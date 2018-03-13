@@ -2,7 +2,7 @@ const fs = require('fs');
 module.exports = robot => {
 	robot.on('pull_request', async context => {
 		console.log("CONTEXT" + JSON.stringify(context));
-		if (context["payload"]["action"] == "opened" || context["payload"]["action"] == "edited") {
+		if (context["payload"]["action"] == "opened" || context["payload"]["action"] == "edited" || context["payload"]["action"] == "synchronize") {
 			const githubConfig = context.repo({path: 'Github.json'})
 		    const res = await context.github.repos.getContent(githubConfig)
 		    const template = JSON.parse(Buffer.from(res.data.content, 'base64').toString());
