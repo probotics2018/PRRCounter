@@ -26,3 +26,9 @@ AFTER
 6. Deploy the app to heroku with `git push heroku master`
 a. If you want to push a branch to the heroku app, use command `git push heroku mybranchname:master`
 7. App should be running, check it by setting LOG_LEVEL to trace using `heroku config:set LOG_LEVEL=trace` and then checking the heroku logs with `heroku logs --tail`
+
+-----------------
+
+## Troubleshooting
+If Heroku cannot detect that we're using NodeJS, use command `heroku buildpacks:set heroku/nodejs` to set the language to NodeJS
+Set webhook secret to an actual secret if there are authentication errors
