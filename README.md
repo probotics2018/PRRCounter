@@ -31,4 +31,5 @@ a. If you want to push a branch to the heroku app, use command `git push heroku 
 
 ## Troubleshooting
 If Heroku cannot detect that we're using NodeJS, use command `heroku buildpacks:set heroku/nodejs` to set the language to NodeJS
+
 Set webhook secret to an actual secret if there are authentication errors
