@@ -22,7 +22,7 @@ AFTER
          -----BEGIN EXAMPLE PRIVATE KEY-----\nmyprivatekydannjksdhaf8ygsdhflajsdfdlj\nsdlfahaubhsnflkdasfadsnaslnabsfjfljdsl\nioasdhgioahsdfsda\n-----END PRIVATE KEY-----
 5. Configure the Heroku app, replacing the `APP_ID` and `WEBHOOK_SECRET` with the values for those variables, and setting the path for the `PRIVATE_KEY`:
 
-        $ heroku config:set APP_ID=12345 WEBHOOK_SECRET="mysecret" PRIVATE_KEY="-----BEGIN EXAMPLE PRIVATE KEY----- 1234y8hdksfdbasdkbjhk\n"
+         heroku config:set APP_ID=12345 WEBHOOK_SECRET="mysecret" PRIVATE_KEY="-----BEGIN EXAMPLE PRIVATE KEY----- 1234y8hdksfdbasdkbjhk\n"
 6. Deploy the app to heroku with `git push heroku master`
 a. If you want to push a branch to the heroku app, use command `git push heroku mybranchname:master`
 7. App should be running, check it by setting LOG_LEVEL to trace using `heroku config:set LOG_LEVEL=trace` and then checking the heroku logs with `heroku logs --tail`
