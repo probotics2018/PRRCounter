@@ -1,5 +1,9 @@
 # PRRCounter
 
+PRRCounter is a GitHub app that counts the number of approved pull request reviews an app has and then changes the pull request's status to mergeable/not mergeable depending on the number of approved pull request necessary specified in Github.json (in the base folder of the repository)
+
+---------------------
+
 Instructions for installing PRRCounter on a Windows computer
 
 --------------
