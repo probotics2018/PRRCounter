@@ -54,7 +54,7 @@ a. If you want to push a branch to the heroku app, use command `git push heroku 
 -----------------
 
 ### Expected Outcome
-1. To generate the expected outcome, install PRRCounter on a 
+1. To generate the expected outcome, install PRRCounter on a repository and create a file called `Github.json`. This file should be structured like [this](https://github.com/probotics2018/PRRCounter/blob/master/Github.json) where the number next to `"approved-reviewer-count"` is the required number of approved reviews a Pull Request must have before being allowed to merge into the master branch
 
 ### Troubleshooting
 If Heroku cannot detect that we're using NodeJS, use command `heroku buildpacks:set heroku/nodejs` to set the language to NodeJS
