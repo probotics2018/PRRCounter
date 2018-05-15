@@ -20,9 +20,9 @@ PRRCounter checks for the number of pull request reviews that have the status of
 ## Instructions for installing and deploying PRRCounter on a Windows computer
 
 ### Create a new Heroku app
-1. If you haven't already, download and install [Heroku](https://www.heroku.com/) and ask Mr. Schmit for the Heroku email/password
+1. If you haven't already, download and install [Heroku](https://devcenter.heroku.com/articles/heroku-cli) and ask Mr. Schmit for the Heroku email/password
 2. Clone the repository of the app you want to deploy Example: `git clone git@github.com:probotics2018/PRRCounter.git`
-3. Create a new heroku app using the command `heroku create`
+3. Create a new heroku app using the command `heroku create` in a terminal window in the folder of the repository you just cloned
 4. Create a new GitHub app [here](https://github.com/settings/apps) and fill in the name. You can set the homepage URL User Authorization callback URL, and Webhook URL to the URL of this repository (https://github.com/probotics2018/PRRCounter). You can specify a webhook secret if you'd like but you don't have to set it. 
  + Allow the app to have permission to read+write of Repository Contents, Deployments, Issues, Pull requests, repository webhooks, commit statuses, and checks.
 5. Go back to your [app settings page](https://github.com/settings/apps) and update the **Webhook URL** to the URL of your deployment, e.g. `http://arcane-lowlands-8408.herokuapp.com/`.
