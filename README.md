@@ -4,7 +4,13 @@ PRRCounter is a GitHub app that counts the number of approved pull request revie
 
 ---------------------
 
-Instructions for installing PRRCounter on a Windows computer
+## How PRRCounter works
+
+PRRCounter checks for the number of pull request reviews that have the status of `approved`, then it sets a status on the pull request to either `error` or `pass` depending on the number of pull request reviews with the `approved` status on the pull request. 
+
+----------------
+
+## Instructions for installing and deploying PRRCounter on a Windows computer
 
 --------------
 
