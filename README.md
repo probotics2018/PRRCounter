@@ -12,8 +12,8 @@ PRRCounter checks for the number of pull request reviews that have the status of
 
 ## Necessary Tools
 
-..*A Heroku Account
-..*A Windows 7 Computer
++ A Heroku Account
++ A Windows 7 Computer
 
 ## Instructions for installing and deploying PRRCounter on a Windows computer
 
