@@ -32,6 +32,12 @@ AFTER
 a. If you want to push a branch to the heroku app, use command `git push heroku mybranchname:master`
 7. App should be running, check it by setting LOG_LEVEL to trace using `heroku config:set LOG_LEVEL=trace` and then checking the heroku logs with `heroku logs --tail`
 
+## Target Repository Configuration
+1. Go to the repository's settings page (https://github.com/user/repository/settings) and then to the branches tab. 
+2. Under that tab, click the edit button next to the name of the branch you want to protect (generally the master branch). 
+3. Check the `Protect this branch` option and then `Require status checks to pass before merging`. 
+4. If applicable, check the `Pull Request Review Counter` status check to ensure that it is accounted by GitHub
+
 -----------------
 
 ## Troubleshooting
