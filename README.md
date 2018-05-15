@@ -5,6 +5,7 @@ Instructions for installing PRRCounter on a Windows computer
 --------------
 
 ## Create a new Heroku app
+0. If you haven't already, download and install [Heroku](https://www.heroku.com/) and ask Mr. Schmit for the Heroku email/password
 1. Clone the repository of the app you want to deploy Example: `git clone git@github.com:probotics2018/PRRCounter.git`
 2. Create a new heroku app using the command `heroku create`
 3. Go back to your [app settings page](https://github.com/settings/apps) and update the **Webhook URL** to the URL of your deployment, e.g. `http://arcane-lowlands-8408.herokuapp.com/`.
